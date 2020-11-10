@@ -20,6 +20,14 @@ MHC -> Generate Code
 
 ### System Settings
 
+![system](img/system.png)
+
+Ports -> Use PORT PLIBをTQFP32に変更する.(Pin Tableからも変更可能.)
+
+Processor clockを使ってdelayを使用するう場合はSysTickの設定をする.
+
+コード生成の設定などもSystemに集約されているので一度全体に目を通しておくことをお勧めする.
+
 ### Clock Settings
 
 クロックの設定を行う.
@@ -28,15 +36,29 @@ MHC -> Tools -> Clock Configuration
 
 基本的には初期設定のまま.
 
+![clock](img/clock.png)
+
+水晶を用いてRTCを使用する場合は以下の設定をする.
+
+- 32KHz Oscillator Controller(Advanced Settings) -> 32KHz External Crystal Oscillator(XOSC32k) Enable：Enable
+- 32KHz Oscillator Controller(Advanced Settings) -> Enable 32KHz Output：Enable
+- RTC Clock Selection：XOSC1K
+
 ### DMA Settings
 
 DMAの設定を行う.
 
 MHC -> Tools -> DMA Configuration
 
+![dma](img/dma.png)
+
 ### NVIC Settings
 
 割り込みの設定を行う.
+
+![nvic](img/nvic.png)
+
+割り込みの優先順位を一括で管理する.
 
 ### Pin Settings
 
@@ -50,6 +72,8 @@ MHC -> MHC -> Pin Configuration
 |:--|:--   |:--            |:--            |:--     |:--      |:--  |:--    |:--      |:--           |
 
 設定後のピンの状態.
+
+![pin](img/pin.png)
 
 ## Main
 
@@ -80,6 +104,9 @@ MHC Settingsを起こった時点でコード生成したmainファイルをNo.0
 
 PA15の設定のみ変更し, コード生成を行う. 初期では状態変化割り込みとしているが汎用の入力ピンに変更するため.
 
+|No.|Pin ID|Custom Name    |Function       |Mode    |Direction|Latch|Pull Up|Pull Down|Drive Strength|
+|:--|:--   |:--            |:--            |:--     |:--      |:--  |:--    |:--      |:--           |
+
 他のサンプルを試す場合は元に戻す.
 
 ### 2 Delay
@@ -87,6 +114,14 @@ PA15の設定のみ変更し, コード生成を行う. 初期では状態変化
 Systickを利用したDelay関数で100msのタイマーを作成し, LEDをToggleさせる.
 
 ### 3 Timer
+
+Available Components -> Periherals -> TC -> TC1を選択.
+
+TC1を利用した100msのタイマーを作成し, LEDをToggleさせる.
+
+TC1を以下のように設定する.
+
+![tc1](img/tc1.png)
 
 ### 4 RTC
 
@@ -96,6 +131,8 @@ RTCを利用した1sのタイマーを作成し, LEDをToggleさせる.
 
 RTCを以下のように設定する.
 
+![rtc](img/rtc.png)
+
 ### 5 EIC
 
 Available Components -> Periherals -> EIC -> EICを選択.
@@ -104,9 +141,31 @@ Available Components -> Periherals -> EIC -> EICを選択.
 
 EICを以下のように設定する.
 
+![eic](img/eic.png)
+
 ### 6 SERCOM UART
 
+Available Components -> Periherals -> SERCOM -> SERCOM0を選択.
+
+SERCOM0をUSARTに設定し, TermianlでSerialデバッグをする.
+
+SERCOM0を以下のように設定する.
+
+![sercom0](img/sercom0.png)
+
+Terminalで確認する.
+
+![sercom0_HelloWorld](img/sercom0_HelloWorld.png)
+
 ### 7 SERCOM printf
+
+Available Components -> Tools-> STDIOを選択.
+
+printfのputc, getcをSERCOM0にリダイレクトするように設定する.
+
+SERCOM0とSTDIOのUARTピンをそれぞれ接続する.
+
+![STDIO](img/stdio.png)
 
 ### 8 ADC
 
@@ -114,10 +173,26 @@ Available Components -> Periherals -> ADC -> ADCを選択.
 
 MHC -> MHC -> ADC Configurationを選択.
 
+![adc1](img/adc1.png)
+
+![adc2](img/adc2.png)
+
 ### 9 DAC
 
 Available Components -> Periherals -> DAC -> DACを選択.
 
+DACの設定をする.
+
+![dca](img/dac.png)
+
 ### 10 PWM
+
+Available Components -> Periherals -> TC -> TC1を選択.
+
+TC1の設定をする.
+
+TC1を以下のように設定する.
+
+![tc1](img/tc1.png)
 
 ### 11 I2C
