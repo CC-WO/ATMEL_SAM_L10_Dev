@@ -70,6 +70,16 @@ MHC -> MHC -> Pin Configuration
 
 |No.|Pin ID|Custom Name    |Function       |Mode    |Direction|Latch|Pull Up|Pull Down|Drive Strength|
 |:--|:--   |:--            |:--            |:--     |:--      |:--  |:--    |:--      |:--           |
+|3  |PA02  |               |DAC_VOUT       |Analog  |-        |-    |-      |-        |-             |
+|4  |PA03  |               |ADC_AIN        |Analog  |-        |-    |-      |-        |-             |
+|8  |PA07  |LED            |GPIO           |Digital |Out      |-    |-      |-        |-             |
+|17 |PA16  |               |SERCOM1_PAD0   |Digital |-        |-    |-      |-        |-             |
+|18 |PA17  |               |SERCOM1_PAD1   |Digital |-        |-    |-      |-        |-             |
+|23 |PA24  |               |SERCOM0_PAD2   |Digital |-        |-    |-      |-        |-             |
+|24 |PA25  |               |SERCOM0_PAD3   |Digital |-        |-    |-      |-        |-             |
+|25 |PA27  |               |EIC_EXTINT5    |-       |-        |-    |Enable |-        |-             |
+|31 |PA30  |               |TC1_WO0        |Digital |-        |-    |-      |-        |-             |
+|32 |PA31  |               |TC1_WO1        |Digital |-        |-    |-      |-        |-             |
 
 設定後のピンの状態.
 
