@@ -86,15 +86,15 @@ MHC Settingsを起こった時点でコード生成したmainファイルをNo.0
 |0  |[main.c](MPLABX/firmware/src/main.c)                   |default                          |
 |1  |[main_gpio.c](MPLABX/firmware/src/main_gpio.c)         |Digital Out, Digital In          |
 |2  |[main_delay.c](MPLABX/firmware/src/main_delay.c)       |Delay Function                   |
-|3  |[main_timer.c](MPLABX/firmware/src/main_timer.c)       |Timer Function(on TC3)           |
+|3  |[main_timer.c](MPLABX/firmware/src/main_timer.c)       |Timer Function(on TC0)           |
 |4  |[main_rtc.c](MPLABX/firmware/src/main_rtc.c)           |Real Time Clock Function         |
 |5  |[main_eic.c](MPLABX/firmware/src/main_eic.c)           |External Interrupt Function      |
-|6  |[main_sercom3.c](MPLABX/firmware/src/main_sercom3.c)   |USART(on SERCOM3)                |
+|6  |[main_usart.c](MPLABX/firmware/src/main_usart.c)       |USART(on SERCOM0)                |
 |7  |[main_stdio.c](MPLABX/firmware/src/main_stdio.c)       |Stnadard IO Function             |
 |8  |[main_adc.c](MPLABX/firmware/src/main_adc.c)           |ADC Function                     |
 |9  |[main_dac.c](MPLABX/firmware/src/main_dac.c)           |DAC Function                     |
-|10 |[main_pwm.c](MPLABX/firmware/src/main_pwm.c)           |PWM Function(on TC4)             |
-|11 |[main_iic.c]                                           |I2C(on SERCOM4)                  |
+|10 |[main_pwm.c](MPLABX/firmware/src/main_pwm.c)           |PWM Function(on TC1)             |
+|11 |[main_iic.c]                                           |I2C(on SERCOM1)                  |
 
 ## Peripheral Settings
 
@@ -115,13 +115,13 @@ Systickを利用したDelay関数で100msのタイマーを作成し, LEDをTogg
 
 ### 3 Timer
 
-Available Components -> Periherals -> TC -> TC1を選択.
+Available Components -> Periherals -> TC -> TC0を選択.
 
-TC1を利用した100msのタイマーを作成し, LEDをToggleさせる.
+TC0を利用した100msのタイマーを作成し, LEDをToggleさせる.
 
-TC1を以下のように設定する.
+TC0を以下のように設定する.
 
-![tc1](img/tc1.png)
+![tc0](img/tc0.png)
 
 ### 4 RTC
 
