@@ -28,7 +28,7 @@ Harmony 3 Configuratorが正しく読み込まれていれば, 以下のよう�
 
 MHC -> Exit
 
-## Generate Code
+### Generate Code
 
 MHC -> Generate Code
 

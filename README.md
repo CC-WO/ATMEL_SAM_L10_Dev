@@ -9,14 +9,17 @@ Atmel SAM L10 Development project
 ## Requirement
 
 - macOS Catalina Version 10.15.7
-- MPLAB X IDE 5.45
-  - XC32 v2.50
-  - SAML10_DFP 3.5.87
-  - CMSIS 5.4.0
-- [MPLAB® Harmony Configurator v3](https://www.microchip.com/mplab/mplab-harmony) version3.6.1
-  - DFP 3.3.82
-  - CMSIS 5.7.0
-- [SAM L10 Xplained Pro Evaluation Kit](https://www.microchip.com/DevelopmentTools/ProductDetails/dm320204)
+- IDE
+  - MPLAB X IDE 5.45
+    - XC32 v2.50
+    - SAML10_DFP 3.5.87
+    - CMSIS 5.4.0
+- Code Generator
+  - [MPLAB® Harmony Configurator v3](https://www.microchip.com/mplab/mplab-harmony) version3.6.1
+    - DFP 3.3.82
+    - CMSIS 5.7.0
+- Evaluation Board
+  - [SAM L10 Xplained Pro Evaluation Kit](https://www.microchip.com/DevelopmentTools/ProductDetails/dm320204)
 
 ## Installation
 
@@ -40,8 +43,8 @@ Usage is [here](USAGE.md).
 
 ## Author
 
-- Author: CCWO
-- E-mail: cc.ccwo.cc@gmail.com
+- Author：CCWO
+- E-mail：cc.ccwo.cc@gmail.com
 
 ## References
 
