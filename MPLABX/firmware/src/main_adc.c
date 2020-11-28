@@ -43,16 +43,21 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
 
+    // SYSTICK Settings
+    SYSTICK_TimerStart();
+
+    // ADC Settings
+    ADC_Enable();
+
+    /* Start ADC conversion */
+    ADC_ConversionStart();
+
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
         SYS_Tasks ( );
 
-        // ADC Settings
-        ADC_Enable();
 
-        /* Start ADC conversion */
-        ADC_ConversionStart();
 
         /* Wait till ADC conversion result is available */
         while(!ADC_ConversionStatusGet())

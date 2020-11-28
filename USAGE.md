@@ -1,5 +1,15 @@
 # USAGE
 
+## MPLABX
+
+### Load Project
+
+File -> Open Project
+
+Select
+
+`./MPLABX/firmware/ATMEL_SAM_L10_Dev.X`
+
 ## MPLAB® Harmony Configurator v3
 
 ## Load settings
@@ -7,6 +17,12 @@
 ### Launch MHC
 
 Tools -> Embedded -> MPLAB@ Harmony 3 Configurator
+
+Harmony 3 Configuratorが正しく読み込まれていれば, 以下のような画面が現れる.
+
+<div align="center"><img src="img/mhc3.png" width="80%" alt="mhc3"></div>
+
+各Periheralをクリックすると右側に設定画面が現れるので, 各自設定していく.
 
 ### Close MHC
 
@@ -20,11 +36,11 @@ MHC -> Generate Code
 
 ### System Settings
 
-![system](img/system.png)
+<div align="center"><img src="img/system.png" width="60%" alt="system"></div>
 
-Ports -> Use PORT PLIBをTQFP32に変更する.(Pin Tableからも変更可能.)
+Ports -> Use PORT PLIBをTQFP32に変更する.(Pin Tableからも変更可能.) パッケージの変更を行うとピンの設定が初期化されるので初めに行うことをおすすめする.
 
-Processor clockを使ってdelayを使用するう場合はSysTickの設定をする.
+Processor clockを使ってdelay(SYSTICK_DelayMs)を使用する場合はSysTickの設定をする.
 
 コード生成の設定などもSystemに集約されているので一度全体に目を通しておくことをお勧めする.
 
@@ -56,7 +72,7 @@ MHC -> Tools -> DMA Configuration
 
 割り込みの設定を行う.
 
-![nvic](img/nvic.png)
+<div align="center"><img src="img/nvic.png" width="60%" alt="nvic"></div>
 
 割り込みの優先順位を一括で管理する.
 
@@ -71,7 +87,7 @@ MHC -> MHC -> Pin Configuration
 |No.|Pin ID|Custom Name    |Function       |Mode    |Direction|Latch|Pull Up|Pull Down|Drive Strength|
 |:--|:--   |:--            |:--            |:--     |:--      |:--  |:--    |:--      |:--           |
 |3  |PA02  |               |DAC_VOUT       |Analog  |-        |-    |-      |-        |-             |
-|4  |PA03  |               |ADC_AIN        |Analog  |-        |-    |-      |-        |-             |
+|4  |PA03  |               |ADC_AIN1       |Analog  |-        |-    |-      |-        |-             |
 |8  |PA07  |LED            |GPIO           |Digital |Out      |-    |-      |-        |-             |
 |17 |PA16  |               |SERCOM1_PAD0   |Digital |-        |-    |-      |-        |-             |
 |18 |PA17  |               |SERCOM1_PAD1   |Digital |-        |-    |-      |-        |-             |
@@ -83,11 +99,11 @@ MHC -> MHC -> Pin Configuration
 
 設定後のピンの状態.
 
-![pin](img/pin.png)
+<div align="center"><img src="img/pin.png" width="60%" alt="pin"></div>
 
 ## Main
 
-MHC Settingsを起こった時点でコード生成したmainファイルをNo.0とする. 以降, 機能を追加していくたびにmainファイルを別で生成する.
+MHC3でコード生成されるmainファイルをNo.0とする. 以降, 機能を追加していくたびにmainファイルを別で生成する.
 
 デバッグの際は, mainファイルを切り替えて使用する. 基本的には上から順に動作確認することを前提とする.
 
@@ -104,7 +120,6 @@ MHC Settingsを起こった時点でコード生成したmainファイルをNo.0
 |8  |[main_adc.c](MPLABX/firmware/src/main_adc.c)           |ADC Function                     |
 |9  |[main_dac.c](MPLABX/firmware/src/main_dac.c)           |DAC Function                     |
 |10 |[main_pwm.c](MPLABX/firmware/src/main_pwm.c)           |PWM Function(on TC1)             |
-|11 |[main_iic.c]                                           |I2C(on SERCOM1)                  |
 
 ## Peripheral Settings
 
@@ -116,6 +131,7 @@ PA15の設定のみ変更し, コード生成を行う. 初期では状態変化
 
 |No.|Pin ID|Custom Name    |Function       |Mode    |Direction|Latch|Pull Up|Pull Down|Drive Strength|
 |:--|:--   |:--            |:--            |:--     |:--      |:--  |:--    |:--      |:--           |
+|25 |PA27  |BUTTON         |GPIO           |-       |In       |-    |Enable |-        |-             |
 
 他のサンプルを試す場合は元に戻す.
 
@@ -131,7 +147,7 @@ TC0を利用した100msのタイマーを作成し, LEDをToggleさせる.
 
 TC0を以下のように設定する.
 
-![tc0](img/tc0.png)
+<div align="center"><img src="img/tc0.png" width="60%" alt="tc0"></div>
 
 ### 4 RTC
 
@@ -141,7 +157,7 @@ RTCを利用した1sのタイマーを作成し, LEDをToggleさせる.
 
 RTCを以下のように設定する.
 
-![rtc](img/rtc.png)
+<div align="center"><img src="img/rtc.png" width="60%" alt="rtc"></div>
 
 ### 5 EIC
 
@@ -151,7 +167,7 @@ Available Components -> Periherals -> EIC -> EICを選択.
 
 EICを以下のように設定する.
 
-![eic](img/eic.png)
+<div align="center"><img src="img/eic.png" width="60%" alt="eic"></div>
 
 ### 6 SERCOM UART
 
@@ -161,11 +177,9 @@ SERCOM0をUSARTに設定し, TermianlでSerialデバッグをする.
 
 SERCOM0を以下のように設定する.
 
-![sercom0](img/sercom0.png)
+<div align="center"><img src="img/sercom0.png" width="60%" alt="sercom0"></div>
 
 Terminalで確認する.
-
-![sercom0_HelloWorld](img/sercom0_HelloWorld.png)
 
 ### 7 SERCOM printf
 
@@ -175,7 +189,7 @@ printfのputc, getcをSERCOM0にリダイレクトするように設定する.
 
 SERCOM0とSTDIOのUARTピンをそれぞれ接続する.
 
-![STDIO](img/stdio.png)
+<div align="center"><img src="img/stdio.png" width="40%" alt="stdio"></div>
 
 ### 8 ADC
 
@@ -183,26 +197,26 @@ Available Components -> Periherals -> ADC -> ADCを選択.
 
 MHC -> MHC -> ADC Configurationを選択.
 
+PA03をADC入力(AIN1)として使用する. ADC Configurationを以下のように設定する.
+
 ![adc1](img/adc1.png)
 
-![adc2](img/adc2.png)
+ADCを以下のように設定する.
+
+<div align="center"><img src="img/adc2.png" width="60%" alt="adc2"></div>
 
 ### 9 DAC
 
 Available Components -> Periherals -> DAC -> DACを選択.
 
-DACの設定をする.
+DACを以下のように設定する.
 
-![dca](img/dac.png)
+<div align="center"><img src="img/dac.png" width="60%" alt="dac"></div>
 
 ### 10 PWM
 
 Available Components -> Periherals -> TC -> TC1を選択.
 
-TC1の設定をする.
+TC1を以下のように設定する.  PWM周波数：1kHz, 初期Duty：50%に設定.
 
-TC1を以下のように設定する.
-
-![tc1](img/tc1.png)
-
-### 11 I2C
+<div align="center"><img src="img/tc1.png" width="60%" alt="tc1"></div>
